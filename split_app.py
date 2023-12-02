@@ -38,7 +38,7 @@ class Video_from_PC(UserControl):
             'Load File', 
             icon=icons.FILE_UPLOAD, 
             on_click=lambda _: self.file_picker.pick_files(allow_multiple=False, allowed_extensions=['mp4','avi','mkv']),
-            width = 120,
+            width = 140,
         )
         self.text_file_name = Text(color='orange')
         self.progress_ring = Row([ ProgressRing(width=25, height=25) ], visible=False)
@@ -205,7 +205,7 @@ class Video_from_PC(UserControl):
         self.update_clips_number()
 
     def cotas_ti_callback(self, e):
-        if re.match('^[\d.,]+$', str(self.ti.value)):
+        if re.match(r'^[\d.,]+$', str(self.ti.value)):
             if float(self.ti.value) >= float(self.tf.value):
                 self.ti.value = float(self.tf.value) - 1
             elif float(self.ti.value) < 0:
@@ -216,7 +216,7 @@ class Video_from_PC(UserControl):
 
     def cotas_tf_callback(self, e):
         t = self.FILE_INFO['duration']
-        if re.match('^[\d.,]+$', str(self.tf.value)):
+        if re.match(r'^[\d.,]+$', str(self.tf.value)):
             if float(self.tf.value) <= float(self.ti.value):
                 self.tf.value = float(self.ti.value) + 1
             elif float(self.tf.value) > t:
@@ -226,7 +226,7 @@ class Video_from_PC(UserControl):
         self.cotas_dt_callback(self)
 
     def cotas_dt_callback(self, e):
-        if re.match('^[\d.,]+$', str(self.dt.value)):
+        if re.match(r'^[\d.,]+$', str(self.dt.value)):
             if float(self.dt.value) < 1:
                 self.dt.value = 1.0
             if float(self.dt.value) > float(self.tf.value)-float(self.ti.value):
@@ -575,7 +575,7 @@ class Video_from_YT(UserControl):
         self.update_clips_number()
 
     def cotas_ti_callback(self, e):
-        if re.match('^[\d.,]+$', str(self.ti.value)):
+        if re.match(r'^[\d.,]+$', str(self.ti.value)):
             if float(self.ti.value) >= float(self.tf.value):
                 self.ti.value = float(self.tf.value) - 1
             elif float(self.ti.value) < 0:
@@ -586,7 +586,7 @@ class Video_from_YT(UserControl):
 
     def cotas_tf_callback(self, e):
         t = self.FILE_INFO['duration']
-        if re.match('^[\d.,]+$', str(self.tf.value)):
+        if re.match(r'^[\d.,]+$', str(self.tf.value)):
             if float(self.tf.value) <= float(self.ti.value):
                 self.tf.value = float(self.ti.value) + 1
             elif float(self.tf.value) > t:
@@ -596,7 +596,7 @@ class Video_from_YT(UserControl):
         self.cotas_dt_callback(self)
 
     def cotas_dt_callback(self, e):
-        if re.match('^[\d.,]+$', str(self.dt.value)):
+        if re.match(r'^[\d.,]+$', str(self.dt.value)):
             if float(self.dt.value) < 1:
                 self.dt.value = 1.0
             if float(self.dt.value) > float(self.tf.value)-float(self.ti.value):
@@ -703,12 +703,12 @@ class page_properties():
         self.page.theme_mode = ft.ThemeMode.DARK
         self.page.title = 'Video Splitter' + ' - ' + 'v' + VERSION
         self.page.horizontal_alignment = 'center'
-        self.page.vertical_alignment = 'center'
+        #self.page.vertical_alignment = 'center'
         self.page.window_always_on_top = True
         self.page.window_width = 450
-        self.page.window_height = 700
+        self.page.window_height = 800
         self.page.window_resizable = False
-        self.page.padding = 20
+        self.page.padding = 10
         self.page.scroll = True
 
 class Options(UserControl):
@@ -748,7 +748,7 @@ def main(page: Page):
     global cont, div
     page_properties(page)
 
-    cont = Container(width=400, height=800, padding=5, bgcolor='#212121', border_radius=10)
+    cont = Container(height=800, padding=5, bgcolor='#212121', border_radius=5)
 
     # Encabezado
     enc = Row([

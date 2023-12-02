@@ -8,5 +8,5 @@ Este repositorio contiene el código en python para una aplicación de escritori
 Es necesario tener python previamente instalado en el equipo. Luego se pueden seguir la secuencia de pasos a continuación para ejecutar la aplicación:
 
 1. Clonar el repositorio: `git clone https://github.com/armando-palacio/video_splitter.git`
-2. Instalar las dependencias de la aplicación (Es conveniente crear un entorno virtual unicamente para usar la app `conda create -n video_splitter`): `python -m pip install -r requirements.txt`
-3. Ejecutar la aplicación de escritorio: `python app.py`
+2. Instalar las dependencias de la aplicación (Es conveniente crear un entorno virtual unicamente para usar la app `conda create -n multimedia python`): `python -m pip install -r requirements.txt`
+3. Ejecutar la aplicación de escritorio: `python split_app.py`
